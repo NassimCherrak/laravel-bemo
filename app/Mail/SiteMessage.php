@@ -30,6 +30,6 @@ class SiteMessage extends Mailable
      */
     public function build()
     {
-        return $this->from('nassim.cherrak@gmail.com')->view('emails.email');
+        return $this->from($this->userInfo['email'])->view('emails.email');
     }
 }
