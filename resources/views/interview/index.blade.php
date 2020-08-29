@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="main-content">
+<div class="main-content all-content">
 
 <div id="preview">
 	
