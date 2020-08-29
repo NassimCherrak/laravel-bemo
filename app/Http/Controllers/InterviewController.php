@@ -57,6 +57,10 @@ class InterviewController extends Controller
         $activeImage = '';
     	$activeTitle = '';
 
+    	$siteSetup = SiteSetup::getAllSiteSetup()->get();
+    	$siteSetup = $this->dbToArray($siteSetup);
+    	$siteSetup = $this->cleanSiteSetup($siteSetup);
+
         return view('interview.changesapplied', compact('changes', 'activeImage', 'siteSetup', 'activeTitle', 'noIndex'));
     }
 
