@@ -16,4 +16,8 @@ class ActiveImage extends Model
 	public function scopeGetActiveImage($query, $id) {
 		return $query->where('id', $id);
 	}
+
+	public function scopeGetActiveImageForPage($query, $page) {
+		return $query->where('page', $page);
+	}
 }

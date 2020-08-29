@@ -225,9 +225,7 @@ class InterviewController extends Controller
     				$newImage = Images::create($inputImage);
     				$myPage = Pages::getPage($pageAffected)->get()[0]->getAttributes()['id'];
 
-    				echo "<pre>";print_r($pageAffected);echo "</pre>";
-    				echo "<pre>";print_r($myPage);echo "</pre>";exit;
-    				$currentImage = ActiveImage::getActiveImage($myPage);
+    				$currentImage = ActiveImage::getActiveImageForPage($myPage);
 
 	    			$currentImage->update([
 			    		'image' => $newImage->id,
