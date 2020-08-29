@@ -34,7 +34,7 @@ class InterviewController extends Controller
 
     	$noIndex = $siteSetup['noindexHome'] == 'on';
 
-    	$activeImage = '/laravel-bemo/storage/app/public/images/'.$activeImage;
+    	$activeImage = 'images/'.$activeImage;
     	return view('interview.index', compact('activeImage', 'homeContent', 'activeTitle', 'siteSetup', 'noIndex'));
     }
 
@@ -74,7 +74,7 @@ class InterviewController extends Controller
 
     	$noIndex = $siteSetup['noindexContact'] == 'on';
 
-    	$activeImage = '/laravel-bemo/storage/app/public/images/'.$activeImage;
+    	$activeImage = 'images/'.$activeImage;
     	return view('interview.contact', compact('activeImage', 'siteSetup', 'activeTitle', 'noIndex'));
     }
 
@@ -213,6 +213,8 @@ class InterviewController extends Controller
     				$request->image->store('images', 'public');
 
     				$imageName = $request->image->hashName();
+    				$request->image->move(public_path('/images'), $imageName);
+
     				$imageLabel = request('new-label');
 
     				$inputImage = array(
@@ -279,6 +281,10 @@ class InterviewController extends Controller
     	$noIndex = true;
     	$activeImage = '';
     	$activeTitle = '';
+
+    	$siteSetup = SiteSetup::getAllSiteSetup()->get();
+    	$siteSetup = $this->dbToArray($siteSetup);
+    	$siteSetup = $this->cleanSiteSetup($siteSetup);
 
     	return view('interview.changesapplied', compact('changes', 'activeImage', 'siteSetup', 'activeTitle', 'noIndex'));
     }
