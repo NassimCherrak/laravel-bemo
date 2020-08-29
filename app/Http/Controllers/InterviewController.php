@@ -43,12 +43,15 @@ class InterviewController extends Controller
     **/
     public function homePost(Request $request) {
     	$htmlNewContent = request('quill-html');
+    	$htmlNewContent = str_replace("'", "\'", $htmlNewContent);
+    	$htmlNewContent = str_replace("\\\'", "\'", $htmlNewContent);
+
     	$contentId = request('content-id');
 
     	$currentContent = HomeContent::getContent($contentId);
 
     	$currentContent->update([
-    		'contentbody' => str_replace("'", "\'", $htmlNewContent),
+    		'contentbody' => $htmlNewContent,
         ]);
 
         $changes = array('Content of the page was changed successfully.');
