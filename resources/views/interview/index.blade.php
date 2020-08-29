@@ -8,7 +8,7 @@
 	
 </div>
 <!-- Create the editor container -->
-<div id="edito-box">
+<div id="editor-box">
 	<div id="editor">
 		{!! $homeContent['contentbody'] !!}
 	</div>

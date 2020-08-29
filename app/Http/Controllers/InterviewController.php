@@ -48,7 +48,7 @@ class InterviewController extends Controller
     	$currentContent = HomeContent::getContent($contentId);
 
     	$currentContent->update([
-    		'contentbody' => $htmlNewContent,
+    		'contentbody' => str_replace("'", "\'", $htmlNewContent),
         ]);
 
         $changes = array('Content of the page was changed successfully.');
