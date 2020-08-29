@@ -5,7 +5,7 @@ angular.module('cpApp', []).controller('cpCtrl', ['$scope', function($scope) {
 	//option == 2 individual pages options displayed
     $scope.option = 0;
 
-    $scope.storage = 'images/';
+    $scope.storage = '/images/';
 
     //page custom display off when the page is loaded
     $scope.hometext = false;
