@@ -229,4 +229,8 @@ return [
 
     ],
 
+    'siteloginpassword' => env('SITE_PASSWORD'),
+    'rootacc'   => env('CPADMIN_ACCOUNT'),
+    'rootpass'  => env('CPADMIN_PASSWORD'),
+
 ];

@@ -13,16 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'InterviewController@index');
-Route::post('/', 'InterviewController@homePost');
+Route::get('/access', 'InterviewController@sitelogin');
+Route::post('/access', 'InterviewController@siteloginPost');
 
-Route::get('/contact', 'InterviewController@contact');
-Route::post('/contact', 'InterviewController@contactPost');
+Route::get('/', 'InterviewController@index')->middleware('siteAccess');
+Route::post('/', 'InterviewController@homePost')->middleware('siteAccess');
 
-Route::get('/login', 'InterviewController@login');
-Route::post('/login', 'InterviewController@loginPost');
+Route::get('/contact', 'InterviewController@contact')->middleware('siteAccess');
+Route::post('/contact', 'InterviewController@contactPost')->middleware('siteAccess');
 
-Route::get('/logout', 'InterviewController@logout');
+Route::get('/login', 'InterviewController@login')->middleware('siteAccess');
+Route::post('/login', 'InterviewController@loginPost')->middleware('siteAccess');
 
-Route::get('/admin', 'InterviewController@controlPanel')->middleware('login');
-Route::post('/admin', 'InterviewController@controlPanelPost')->middleware('login');
+Route::get('/logout', 'InterviewController@logout')->middleware('siteAccess');
+
+Route::get('/admin', 'InterviewController@controlPanel')->middleware('login', 'siteAccess');
+Route::post('/admin', 'InterviewController@controlPanelPost')->middleware('login', 'siteAccess');

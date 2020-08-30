@@ -137,7 +137,7 @@ class InterviewController extends Controller
     	$password = request('password');
 
     	// a little embarrassing but forced due to lack of time
-    	if(strtolower($user) == 'bemoadmin' and strtolower($password) == 'iwantcontrolpanel') {
+    	if(strtolower($user) == config('app.rootacc') and strtolower($password) == config('app.rootpass')) {
     		session([
     			'user'	=> $user,
     			'admin'	=> true,
@@ -298,6 +298,26 @@ class InterviewController extends Controller
     	$siteSetup = $this->cleanSiteSetup($siteSetup);
 
     	return view('interview.changesapplied', compact('changes', 'activeImage', 'siteSetup', 'activeTitle', 'noIndex'));
+    }
+
+    /**
+    *
+    **/
+    public function sitelogin() {
+    	return view('interview.sitelogin');
+    }
+
+    /**
+    *
+    **/
+    public function siteloginPost(Request $request) {
+    	if(request('password') == config('app.siteloginpassword')) {
+    		session([
+    			'siteaccess'	=> true,
+    		]);
+    		return redirect('/');
+    	}
+    	return back()->withErrors(['Incorrect login information']);
     }
 
     /**
