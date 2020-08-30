@@ -203,6 +203,9 @@ class InterviewController extends Controller
     **/
     public function controlPanelPost(Request $request) {
 
+    	$request->validate([
+		    'new-label' => 'required_with:image',
+		]);
     	//images updates
     	if($request->has('replaceType')) {
     		$pageAffected = request('pageToModify');

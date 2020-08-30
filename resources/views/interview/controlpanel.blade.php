@@ -74,6 +74,11 @@
 			</div>
 			<!-- GA and FB pixel -->
 		</div>
+		<div>
+			@if($errors->any())
+			<span style="color: red;">{{$errors->first()}}</span>
+			@endif
+		</div>
 	</form>
 </div>
 
