@@ -33,7 +33,7 @@
 				<input type="hidden" name="new-image" ng-value="currentSelectedImage['label']"/>
 				<input type="hidden" name="replaceType" ng-value="replaceType"/>
 				<select ng-model="currentSelectedImage" ng-options='page.label for page in allImages' ng-change="updateDisplayedImage()"></select>
-				<input class="form-input-button" type="submit" value="Submit the image for the @{{ currentPage }} page" ng-click="loadOld()"/>
+				<input class="form-input-button" type="submit" value="Submit this image for the @{{ currentPage }} page" ng-click="loadOld()"/>
 				<br/><br/>
 				<span>or</span>
 				<br/><br/>
